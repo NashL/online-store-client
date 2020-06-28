@@ -18,9 +18,6 @@ class Home extends Component {
         <NavBar />
         <div className="container main-container">
         <h1 className="title">Bienvenidos a tu Tienda Online</h1>
-        <p className="subtitle">
-          My first website with <strong>Bulma</strong>!
-        </p>
         <button onClick={this.signInHandler}> INGRESAR</button>
         <button onClick={this.signUpHandler}> REGISTRARSE</button>
         </div>
