@@ -21,8 +21,6 @@ class Home extends Component {
           <div className="slider-content">
             <SlideShow />
           </div>
-          <button onClick={this.signInHandler}> INGRESAR</button>
-          <button onClick={this.signUpHandler}> REGISTRARSE</button>
         </div>
       </div>
     );
