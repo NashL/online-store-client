@@ -4,21 +4,29 @@ import LoginContainer from "../components/Login/LoginContainer";
 class Auth extends Component {
   state = {
     authenticated: false,
+    showLoginForm: true,
   };
 
   loginWithEmailAndPassword = () => {
     this.setState({ authenticated: true });
   };
 
-
-  handleClose = () => {
-    this.setState({ authenticated: false });
+  handleLoginTab = (newValue) => {
+    this.setState({ showLoginForm: newValue });
   };
+
+  loginWithExternalAPI = () => {
+    console.log(' Login with Facebbok | google ')
+  }
 
   render() {
     return (
       <section className="section">
-        <LoginContainer handleSubmit={this.loginWithEmailAndPassword}  />
+        <LoginContainer
+          showLoginForm={this.state.showLoginForm}
+          loginWithExternalAPI={this.loginWithExternalAPI}
+          handleLoginTab={this.handleLoginTab}
+        />
       </section>
     );
   }

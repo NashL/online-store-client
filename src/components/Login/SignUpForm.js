@@ -12,8 +12,9 @@ class SignUpForm extends Component {
   handleSubmit = () => this.props.handleSubmit(this.state)
 
   render() {
+    const displayStyle = this.props.showLoginForm ? { display: 'none' } : { display: 'block' }
     return (
-      <div className="container box" style={{display: 'none'}}>
+      <div className="container box" style={ displayStyle }>
         <form
           onSubmit={e => {
             e.preventDefault();
