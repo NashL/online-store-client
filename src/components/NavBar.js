@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
+        <a className="navbar-item" href="/">
           <img
             src="https://bulma.io/images/bulma-logo.png"
             width="112"
@@ -30,7 +31,8 @@ const NavBar = () => {
         <div className="navbar-start"></div>
 
         <div className="navbar-end">
-          <a className="navbar-item">Incio de Sesion/Registrarse</a>
+          {/* <a className="navbar-item" href="">Incio de Sesion/Registrarse</a> */}
+          <Link className="navbar-item" to="/login">Inicio de Sesion/Registrarse</Link>
 
           <a className="navbar-item">Comprar</a>
           <a className="navbar-item">Pedidos</a>
