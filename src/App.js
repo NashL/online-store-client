@@ -1,40 +1,27 @@
 import React from 'react';
 import Home from './containers/Home'
-import Login from './containers/Login'
+import Auth from './containers/Auth'
 import NavBar from "./components/NavBar";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
+library.add(fab, faSignInAlt, faUserPlus)
 
 function App() {
   return (
     <Router>
       <div>
         <NavBar />
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav> */}
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/login">
-            <Login />
+            <Auth />
           </Route>
           <Route path="/">
             <Home />

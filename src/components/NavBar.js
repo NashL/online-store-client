@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import companyLogo from '../images/alpha-logo.jpg'
 
 const NavBar = () => {
   return (
@@ -7,9 +8,7 @@ const NavBar = () => {
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
           <img
-            src="https://bulma.io/images/bulma-logo.png"
-            width="112"
-            height="28"
+            src={companyLogo}
             alt="logo"
           />
         </a>

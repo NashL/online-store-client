@@ -1,3 +1,11 @@
+hr {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  width: 100px;
+}
+
 // body{
 //   display: flex;
 //   align-items: center;
@@ -123,77 +131,77 @@
 //   }
 // }
 
-#slider { //center
-  overflow: hidden;
+// #slider { //center
+//   overflow: hidden;
 
-  figure { // 	images
-    position: relative;
-    width: 500%;
-    height: 100%;
-    margin: 0;
-    left: 0;
+//   figure { // 	images
+//     position: relative;
+//     width: 500%;
+//     height: 100%;
+//     margin: 0;
+//     left: 0;
 
-    img { // slide
-      height: inherit;
-      width: 20%;
-      transition: 1s;
-    }
-  }
-  .slider-buttons {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    display: flex;
-    transform: translateX(-50%);
+//     img { // slide
+//       height: inherit;
+//       width: 20%;
+//       transition: 1s;
+//     }
+//   }
+//   .slider-buttons {
+//     position: absolute;
+//     bottom: 20px;
+//     left: 50%;
+//     display: flex;
+//     transform: translateX(-50%);
 
-    span {
-      width: 30px;
-      height: 10px;
-      border: 2px solid white;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: 0.4s;
-      border-radius: 10px;
+//     span {
+//       width: 30px;
+//       height: 10px;
+//       border: 2px solid white;
+//       margin: 0 5px;
+//       cursor: pointer;
+//       transition: 0.4s;
+//       border-radius: 10px;
       
-    }
-    #sliderController {
-      animation: 20s sliderAnimation infinite;
-    }
-    .active {
-      transition: 0.5s;
-      transform: scale(0.999);
-      background: white;
-      animation: animateSelection .4s;
-    }
-  }
-}
+//     }
+//     #sliderController {
+//       animation: 20s sliderAnimation infinite;
+//     }
+//     .active {
+//       transition: 0.5s;
+//       transform: scale(0.999);
+//       background: white;
+//       animation: animateSelection .4s;
+//     }
+//   }
+// }
 
-@keyframes animateSelection {
-  100%{
-    transform: scale(0.8);
-  }
-}
+// @keyframes animateSelection {
+//   100%{
+//     transform: scale(0.8);
+//   }
+// }
 
-@keyframes sliderAnimation {
-	0% {
-		margin-left: 0;
-	}
-	20% {
-		margin-left: -20%;
-	}
-	40% {
-		margin-left: -40%;
-	}
-	60% {
-		margin-left: -60%;
-	}
-	80% {
-		margin-left: -80%;
-	}
-	100% {
-		margin-left: -100%;
-	}
-}
+// @keyframes sliderAnimation {
+// 	0% {
+// 		margin-left: 0;
+// 	}
+// 	20% {
+// 		margin-left: -20%;
+// 	}
+// 	40% {
+// 		margin-left: -40%;
+// 	}
+// 	60% {
+// 		margin-left: -60%;
+// 	}
+// 	80% {
+// 		margin-left: -80%;
+// 	}
+// 	100% {
+// 		margin-left: -100%;
+// 	}
+// }
 
 
 // .slider-content {
