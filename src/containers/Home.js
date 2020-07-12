@@ -4,23 +4,14 @@ import SlideShow from "../components/SlideShow";
 
 class Home extends Component {
   state = {};
-
-  signInHandler() {
-    console.log("signing in...");
-  }
-
-  signUpHandler() {
-    console.log("signing up...");
-  }
-
   render() {
     return (
       <div>
         <NavBar />
         <div className="container main-container">
-          <div className="slider-content">
-            <SlideShow />
-          </div>
+          {/* <div className="slider-content"> */}
+        <SlideShow />
+          {/* </div> */}
         </div>
       </div>
     );
