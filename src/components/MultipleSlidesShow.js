@@ -48,8 +48,8 @@ export default () => {
       slidesPerGroup={4}
       speed={500}
       navigation
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log('slide change')}
     >
       {
         slides.map((slide, index) => <SwiperSlide><img style={{maxWidth: "100%", height: 'auto'}} alt={"slide" + index} src={slide} /></SwiperSlide>)
