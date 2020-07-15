@@ -2,18 +2,23 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { LOGIN } from '../../graphql/mutations'
 import { useMutation } from '@apollo/react-hooks';
+import { useCookies } from 'react-cookie';
+
 
 export default (props) => {
+  const [cookies, setCookie, removeCookie] = useCookies(['gonline-store']);
   const { register, handleSubmit, errors } = useForm();
   const [login] = useMutation(LOGIN)
 
   const onSubmit = (data) => {
     console.log(data);
-    login({ variables: data}).then( response => 
-      console.log('loginResponse', response )
-    ).catch(error => {
-      console.error('loginError', error)
-    })
+    login({ variables: data})
+      .then( response => {
+        setCookie('gonlineStoreToken', response.data.login.token, { path: '/' })
+        console.log('loginResponse', response )
+      }).catch( error => {
+        console.error('loginError', error)
+      })
   };
 
   const displayStyle = props.showLoginForm
