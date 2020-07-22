@@ -5,9 +5,10 @@ import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { CookiesProvider } from 'react-cookie';
 
-
+import 'react-toastify/dist/ReactToastify.css';
 import './App.scss'
 import Users from './components/Users';
+import { ToastContainer } from 'react-toastify';
 
 const client = new ApolloClient({
   uri: 'http://localhost:8080/query'
@@ -18,6 +19,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <CookiesProvider>
+      <ToastContainer />
       <Users />
       <App/>
     </CookiesProvider>

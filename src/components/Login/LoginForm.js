@@ -2,21 +2,30 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { LOGIN } from '../../graphql/mutations'
 import { useMutation } from '@apollo/react-hooks';
-import { useCookies } from 'react-cookie';
+import { toast } from 'react-toastify';
+import { useHistory } from "react-router"
+import jwtService from '../../helpers/jwt'
+
 
 
 export default (props) => {
-  const [cookies, setCookie, removeCookie] = useCookies(['gonline-store']);
+  // const [cookies, setCookie] = useCookies(['gonlineStoreToken']);
+
   const { register, handleSubmit, errors } = useForm();
   const [login] = useMutation(LOGIN)
+  const history = useHistory()
 
   const onSubmit = (data) => {
     console.log(data);
     login({ variables: data})
       .then( response => {
-        setCookie('gonlineStoreToken', response.data.login.token, { path: '/' })
+        // setCookie('gonlineStoreToken', response.data.login.token, { path: '/' });
+        jwtService.setToken(response.data.login.token);
+        toast.success(`Bienvenido!`);
+        history.push('/')
         console.log('loginResponse', response )
       }).catch( error => {
+        toast.error('Something went wrong!')
         console.error('loginError', error)
       })
   };
