@@ -12,3 +12,12 @@ export const GET_USERS = gql`
     }
   }
 `
+export const CURRENT_USER = gql`
+  query currentUser {
+    currentUser {
+      userId
+      fullName
+      email
+    }
+  }
+`

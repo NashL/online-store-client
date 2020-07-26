@@ -1,33 +1,32 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { LOGIN } from '../../graphql/mutations'
-import { useMutation } from '@apollo/react-hooks';
-import { toast } from 'react-toastify';
-import { useHistory } from "react-router"
-import jwtService from '../../helpers/jwt'
-
-
+import { LOGIN } from "../../graphql/mutations";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router";
+import jwtDecode from "jwt-decode";
 
 export default (props) => {
-  // const [cookies, setCookie] = useCookies(['gonlineStoreToken']);
 
+  console.log('props', props)
   const { register, handleSubmit, errors } = useForm();
-  const [login] = useMutation(LOGIN)
-  const history = useHistory()
+  const [login] = useMutation(LOGIN);
+  const history = useHistory();
 
   const onSubmit = (data) => {
-    console.log(data);
-    login({ variables: data})
-      .then( response => {
-        // setCookie('gonlineStoreToken', response.data.login.token, { path: '/' });
-        jwtService.setToken(response.data.login.token);
-        toast.success(`Bienvenido!`);
-        history.push('/')
-        console.log('loginResponse', response )
-      }).catch( error => {
-        toast.error('Something went wrong!')
-        console.error('loginError', error)
+    login({ variables: data })
+      .then((response) => {
+        const jwtDecoded = jwtDecode(response.data.login.token);
+        console.log("jwtDecoded", jwtDecoded);
+        toast.success(`Bienvenido ${jwtDecoded.fullName}!`);
+        props.onLoginHandler(jwtDecoded)
+        console.log("loginResponse", response);
+        history.push("/");
       })
+      .catch((error) => {
+        toast.error("Something went wrong!");
+        console.error("loginError", error);
+      });
   };
 
   const displayStyle = props.showLoginForm

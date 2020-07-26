@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 // import Swiper core and required components
-import SwiperCore, { Navigation, A11y } from 'swiper';
+import SwiperCore, { Navigation, A11y } from "swiper";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
 
 import slide1 from "../images/multiple-slides-carousel/slide1.jpg";
 import slide2 from "../images/multiple-slides-carousel/slide2.jpg";
@@ -21,7 +21,6 @@ import slide10 from "../images/multiple-slides-carousel/slide10.jpg";
 import slide11 from "../images/multiple-slides-carousel/slide11.jpg";
 import slide12 from "../images/multiple-slides-carousel/slide12.jpg";
 
-
 const slides = [
   slide1,
   slide2,
@@ -35,7 +34,7 @@ const slides = [
   slide10,
   slide11,
   slide12,
-]
+];
 
 // install Swiper components
 SwiperCore.use([Navigation, A11y]);
@@ -51,9 +50,15 @@ export default () => {
       // onSwiper={(swiper) => console.log(swiper)}
       // onSlideChange={() => console.log('slide change')}
     >
-      {
-        slides.map((slide, index) => <SwiperSlide><img style={{maxWidth: "100%", height: 'auto'}} alt={"slide" + index} src={slide} /></SwiperSlide>)
-      }
+      {slides.map((slide, index) => 
+        <SwiperSlide key={`MSS-${index}`}>
+          <img
+            style={{ maxWidth: "100%", height: "auto" }}
+            alt={"slide" + index}
+            src={slide}
+          />
+        </SwiperSlide>
+      )}
     </Swiper>
   );
 };

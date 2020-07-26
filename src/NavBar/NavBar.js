@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from 'react-router-dom'
 import companyLogo from '../images/alpha-logo.jpg'
+import LoginNavBarItem from './LoginItem'
 
-const NavBar = () => {
+const NavBar = (props) => {
+
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -31,7 +32,8 @@ const NavBar = () => {
 
         <div className="navbar-end">
           {/* <a className="navbar-item" href="">Incio de Sesion/Registrarse</a> */}
-          <Link className="navbar-item" to="/login">Inicio de Sesion/Registrarse</Link>
+          {/* <Link className="navbar-item" to="/login">Inicio de Sesion/Registrarse</Link> */}
+          <LoginNavBarItem currentUser={props.currentUser} />
 
           <a className="navbar-item">Comprar</a>
           <a className="navbar-item">Pedidos</a>

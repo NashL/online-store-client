@@ -3,12 +3,7 @@ import LoginContainer from "../components/Login/LoginContainer";
 
 class Auth extends Component {
   state = {
-    authenticated: false,
     showLoginForm: true,
-  };
-
-  loginWithEmailAndPassword = () => {
-    this.setState({ authenticated: true });
   };
 
   handleLoginTab = (newValue) => {
@@ -23,6 +18,7 @@ class Auth extends Component {
     return (
       <section className="section">
         <LoginContainer
+          onLoginHandler={this.props.onLoginHandler}
           showLoginForm={this.state.showLoginForm}
           loginWithExternalAPI={this.loginWithExternalAPI}
           handleLoginTab={this.handleLoginTab}

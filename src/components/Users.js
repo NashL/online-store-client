@@ -11,7 +11,7 @@ export default ({ onUserSelected }) => {
   return (
     <select name="user" onChange={onUserSelected}>
       {data.users.map(user => (
-        <option key={user.id} value={user.fullName}>
+        <option key={user.userId} value={user.fullName}>
           {user.fullName}
         </option>
       ))}

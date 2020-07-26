@@ -1,15 +1,21 @@
-import { Cookies } from 'react-cookie';
-  
+import { Cookies } from "react-cookie";
+
+
 class JWTService {
-  static cookies = new Cookies()
+  static cookies = new Cookies();
 
   getToken() {
-    return JWTService.cookies.get('gonlineToken')
+    return JWTService.cookies.get("onlineStore");
   }
 
-  setToken(tokenValue) {
-    JWTService.cookies.set('gonlineToken', tokenValue, { path: '/' })
+  setToken(tokenObject) {
+    JWTService.cookies.set("onlineStore", tokenObject.token, {
+      path: "/",
+      expires: new Date(tokenObject.expiredAt * 1000),
+      sameSite: "lax",
+      domain: 'localhost',
+    });
   }
 }
 
-export default new JWTService()
+export default new JWTService();

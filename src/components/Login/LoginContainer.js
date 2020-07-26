@@ -4,11 +4,12 @@ import LoginTab from "./LoginTab";
 import LoginButtons from "./LoginButtons";
 import SignUpForm from "./SignUpForm";
 
-export default ({showLoginForm, loginWithExternalAPI, handleLoginTab}) => {
+export default ({onLoginHandler, showLoginForm, loginWithExternalAPI, handleLoginTab}) => {
+  console.log('--onLoginHandler', onLoginHandler)
   return (
     <div className="has-text-centered container" style={{ maxWidth: "300px" }}>
       <LoginTab showLoginForm={showLoginForm} handleLoginTab={handleLoginTab} />
-      <LoginForm showLoginForm={showLoginForm} />
+      <LoginForm onLoginHandler={onLoginHandler} showLoginForm={showLoginForm} />
       <SignUpForm showLoginForm={showLoginForm} />
       <hr />
       <span style={{ verticalAlign: "middle", padding: "0 10px" }}>O</span>
