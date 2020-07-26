@@ -12,7 +12,8 @@ import { ToastContainer } from 'react-toastify';
 
 const client = new ApolloClient({
 
-  uri: 'http://localhost:8080/query',
+  // uri: 'http://localhost:8080/query',
+  uri: 'https://gonline-store.rj.r.appspot.com',
   cache: new InMemoryCache(),
   credentials: 'include',
   // uri: 'https://gonline-store.rj.r.appspot.com'
