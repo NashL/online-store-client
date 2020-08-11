@@ -8,3 +8,22 @@ export const LOGIN = gql`
     }
   }
 `;
+
+export const SIGNUP = gql`
+  mutation signup($fullName: String! ,$email: String!, $password: String!){
+    signup(fullName: $fullName, email: $email, password: $password) {
+      token
+      expiredAt
+    }
+  }
+`;
+
+export const REFRESH_TOKEN = gql`
+  mutation refreshtoken {
+    refreshToken {
+      token
+      expiredAt
+    }
+  }
+`;
+

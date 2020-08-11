@@ -1,10 +1,32 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { SIGNUP } from "../../graphql/mutations";
+import { useMutation } from "@apollo/react-hooks";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router";
+import jwtDecode from "jwt-decode";
 
 export default (props) => {
   const { register, handleSubmit, errors } = useForm();
+  const [signup] = useMutation(SIGNUP);
+  const history = useHistory();
+
   const onSubmit = (data) => {
-    console.log(data);
+    signup({ variables: data })
+      .then((response) => {
+        console.log("data:", data)
+        const jwtDecoded = jwtDecode(response.data.signup.token);
+        console.log("jwtDecoded", jwtDecoded);
+        toast.success(`Bienvenido ${jwtDecoded.fullName}!`);
+        props.sessionHandler(jwtDecoded)
+        console.log("signUpResponse", response);
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log("data:", data)
+        toast.error("Something went wrong!");
+        console.error("signUpError", error);
+      });
   };
 
   const displayStyle = props.showLoginForm
@@ -14,13 +36,13 @@ export default (props) => {
     <div className="container box" style={displayStyle}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="field">
-          <label className="label" htmlFor="name">
+          <label className="label" htmlFor="fullName">
             Nombres
           </label>
           <div className="control">
             <input
               className="input"
-              name="name"
+              name="fullName"
               type="text"
               placeholder="Nombres"
               ref={register({
@@ -32,9 +54,9 @@ export default (props) => {
               })}
             />
           </div>
-          {errors.name && (
+          {errors.fullName && (
             <p className="help is-danger has-text-left">
-              {errors.name.message}
+              {errors.fullName.message}
             </p>
           )}
         </div>
@@ -103,5 +125,4 @@ export default (props) => {
       </form>
     </div>
   );
-  // }
 };

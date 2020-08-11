@@ -33,7 +33,7 @@ const NavBar = (props) => {
         <div className="navbar-end">
           {/* <a className="navbar-item" href="">Incio de Sesion/Registrarse</a> */}
           {/* <Link className="navbar-item" to="/login">Inicio de Sesion/Registrarse</Link> */}
-          <LoginNavBarItem currentUser={props.currentUser} />
+          <LoginNavBarItem currentUser={props.currentUser} onLogoutHandler={props.onLogoutHandler} />
 
           <a className="navbar-item">Comprar</a>
           <a className="navbar-item">Pedidos</a>

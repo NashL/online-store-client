@@ -1,31 +1,18 @@
-import React, { Component } from "react";
-import LoginContainer from "../components/Login/LoginContainer";
+import React, { Component, useState } from "react";
+import AuthContainer from "../components/Login/AuthContainer";
 
-class Auth extends Component {
-  state = {
-    showLoginForm: true,
-  };
+function Auth(props) {
+  const [showLoginForm, setShowLoginForm] = useState(true);
 
-  handleLoginTab = (newValue) => {
-    this.setState({ showLoginForm: newValue });
-  };
-
-  loginWithExternalAPI = () => {
-    console.log(' Login with Facebbok | google ')
-  }
-
-  render() {
-    return (
-      <section className="section">
-        <LoginContainer
-          onLoginHandler={this.props.onLoginHandler}
-          showLoginForm={this.state.showLoginForm}
-          loginWithExternalAPI={this.loginWithExternalAPI}
-          handleLoginTab={this.handleLoginTab}
-        />
-      </section>
-    );
-  }
+  return (
+    <section className="section">
+      <AuthContainer
+        sessionHandler={props.sessionHandler}
+        showLoginForm={showLoginForm}
+        handleLoginTab={setShowLoginForm}
+      />
+    </section>
+  );
 }
 
 export default Auth;

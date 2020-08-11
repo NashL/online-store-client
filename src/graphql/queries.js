@@ -21,3 +21,11 @@ export const CURRENT_USER = gql`
     }
   }
 `
+
+export const LOGOUT = gql`
+  query logout {
+    logout {
+      message
+    }
+  }
+`

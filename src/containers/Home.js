@@ -7,7 +7,7 @@ class Home extends Component {
   state = {};
 
   componentDidUpdate() {
-    alert('Home')
+    // alert('Home')
   
   }
   render() {

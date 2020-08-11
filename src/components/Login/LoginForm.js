@@ -1,14 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { LOGIN } from "../../graphql/mutations";
-import { useMutation, useQuery } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router";
 import jwtDecode from "jwt-decode";
 
 export default (props) => {
 
-  console.log('props', props)
   const { register, handleSubmit, errors } = useForm();
   const [login] = useMutation(LOGIN);
   const history = useHistory();
@@ -19,7 +18,7 @@ export default (props) => {
         const jwtDecoded = jwtDecode(response.data.login.token);
         console.log("jwtDecoded", jwtDecoded);
         toast.success(`Bienvenido ${jwtDecoded.fullName}!`);
-        props.onLoginHandler(jwtDecoded)
+        props.sessionHandler(jwtDecoded)
         console.log("loginResponse", response);
         history.push("/");
       })
